@@ -3,8 +3,9 @@ import string
 import operator
 
 frequency = {}
-input_file = open('input.txt', 'r')
-text_string = input_file.read().lower()
+with open('input.txt', 'r') as rf:
+    text_string = rf.read().lower()
+
 match_pattern = re.findall(r'\b[a-z]{4,25}\b', text_string)
  
 for word in match_pattern:
@@ -13,10 +14,9 @@ for word in match_pattern:
 
 sorted_frequency = sorted(frequency.items(), key=lambda x: (-x[1],x[0]))
 
-output_file = open('output.txt', 'w')
-
-for word, count in sorted_frequency:
-    output_file.write(str(count))
-    output_file.write(' ')
-    output_file.write(word)
-    output_file.write('\n')
+with open('output.txt', 'w') as wf:
+    for word, count in sorted_frequency:
+        wf.write(str(count))
+        wf.write(' ')
+        wf.write(word)
+        wf.write('\n')
