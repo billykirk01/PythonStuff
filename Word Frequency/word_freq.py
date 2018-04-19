@@ -3,6 +3,7 @@ import string
 import operator
 
 frequency = {}
+
 with open('input.txt', 'r') as rf:
     text_string = rf.read().lower()
 
